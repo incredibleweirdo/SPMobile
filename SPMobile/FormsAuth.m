@@ -73,7 +73,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"Connection Error: %@", [error description]);
-    [_authDelegate authentication:(id)self: error];
+    [_authDelegate authentication:(id)self didFailWithError:error];
     [connection cancel];
 }
 
