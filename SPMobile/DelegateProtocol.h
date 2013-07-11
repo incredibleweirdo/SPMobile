@@ -36,7 +36,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 @protocol   SPDelegate <NSObject>
 @optional
 - (void)authentication: (SPClientCallbackDelegate *)didAuthenticate;
-- (void)authentication: (SPClientCallbackDelegate *)didFailWithError: (NSError *)error;
+- (void)authentication: (SPClientCallbackDelegate *)delegate didFailWithError: (NSError *)error;
 
 -(void)RemoteQuery:(id)RemoteQuery didCompleteQuery: (NSString *)result;
 -(void)RemoteQuery:(id)RemoteQuery didCompleteQueryWithRequestId: (NSString *)result requestId:(NSString *)requestId;
