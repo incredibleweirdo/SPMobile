@@ -77,6 +77,24 @@
     [connection cancel];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    NSLog(@"Received authentication challenge");
+    NSInteger challengeCount = [challenge previousFailureCount];
+    if (challengeCount > 0) {
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+        NSLog(@"Authentication failure");
+    }else{
+    NSURLCredential *newCredential = [NSURLCredential credentialWithUser:username password:password persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+    }
+}
+
+- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
+{
+    return NO;
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     NSLog(@"Response Received");
