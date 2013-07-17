@@ -13,7 +13,7 @@ Usage
 -----
 First of all, include SPMobile.h in each page where you're using the library.
 
-
+```objective-c
     Authentication *auth;
     
     // This authenticates to SharePoint Online
@@ -23,10 +23,9 @@ First of all, include SPMobile.h in each page where you're using the library.
     auth = [[FormsAuth alloc] initWithUsernamePasswordSite:username password:password site:siteUrl];
     [auth setAuthdelegate:self];
     [auth authenticate];
-    
-    
+```
 Authentication Delegates
--
+```objective-c    
 
     - (void)authentication: (SPAuthentication *)didAuthenticate
     {
@@ -37,11 +36,10 @@ Authentication Delegates
     {
       // Do something helpful as Auth failed for some reason.
     }
-    
-
+``` 
 
 Querying SharePoint (SP2013 _api example)
--
+```objective-c
 
     NSString* urlRequest = @"http://somesharepointsite/sites/myweb/_api/web/Title";
     NSString* requestIdStr = @"TitleRequest"
@@ -53,9 +51,11 @@ Querying SharePoint (SP2013 _api example)
     [query setIncludeFormDigest:false];
     
     [query executeQuery];
+```
     
 Querying SharePoint (SP2007/SP2010/SP2013 classic web services)
--
+```objective-c
+
     NSString* urlRequest = @"http://somesharepointsite/sites/TeamSite/_vti_bin/Lists.asmx";
     NSString* requestIdStr = @"AllListsRequest";
     NSMutableString* requestMethod = [NSMutableString stringWithString:@"POST"];
@@ -74,10 +74,10 @@ Querying SharePoint (SP2007/SP2010/SP2013 classic web services)
         [query setSoapAction:soapAction];
     
     [query executeQuery];
-    
+```  
     
 Query Response Delegate Methods
--
+```objective-c
 
     - (void)RemoteQuery:(id)RemoteQuery didCompleteQueryWithRequestId:(NSString *)result requestId:(NSString *)requestId
     {
@@ -96,7 +96,7 @@ Query Response Delegate Methods
       // Handle (nicely) the fact that the query failed for some reason.
       // Note that this (should) happens when you have anything other than a 200 or a redirect.
     }
-
+```
 
 License
 -
