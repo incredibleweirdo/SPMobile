@@ -45,7 +45,7 @@ Querying SharePoint (SP2013 _api example)
 
     NSString* urlRequest = @"http://somesharepointsite/sites/myweb/_api/web/Title";
     NSString* requestIdStr = @"TitleRequest"
-    NSMutableString* requestMethod = @"GET"
+    NSMutableString* requestMethod = [NSMutableString stringWithString:@"GET"];
     
     RemoteQuery* query = [[RemoteQuery alloc] initWithUrlRequestId:urlRequest id:requestId];
     [query setDelegate:self];
@@ -58,7 +58,7 @@ Querying SharePoint (SP2007/SP2010/SP2013 classic web services)
 -
     NSString* urlRequest = @"http://somesharepointsite/sites/TeamSite/_vti_bin/Lists.asmx";
     NSString* requestIdStr = @"AllListsRequest";
-    NSMutableString* requestMethod = @"POST";
+    NSMutableString* requestMethod = [NSMutableString stringWithString:@"POST"];
     NSString* payload = @"<<FULL SOAP PACKET OF REQUEST HERE>>";
     NSString* soapAction = @"http://schemas.microsoft.com/sharepoint/soap/GetListCollection";
     
